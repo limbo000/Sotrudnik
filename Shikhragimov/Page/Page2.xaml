@@ -1,0 +1,43 @@
+﻿<Page x:Class="Shikhragimov.Page.Page2"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Shikhragimov.Page"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="Page2">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListView x:Name="SotListView" Grid.Row="0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="300"></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" VerticalAlignment="Center"
+                                    HorizontalAlignment="Left">
+                            <TextBlock Text="{Binding FIO,
+                                StringFormat={}ФИО: {0}}"></TextBlock>
+                            <TextBlock Text="{Binding Email,
+                                StringFormat={}Email: {0}}"></TextBlock>
+                            <TextBlock Text="{Binding Birthday,
+                                StringFormat={}Дата рождения: {0}}"></TextBlock>
+                            <TextBlock Text="{Binding Number_phone,
+                                StringFormat={}Номер телефона: {0}}"></TextBlock>
+                        </StackPanel>
+                        <TextBlock Grid.Column="1" Text="{Binding Dol.Name_d,
+                                StringFormat={}Должность: {0}}"></TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

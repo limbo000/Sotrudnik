@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ShikhragimovModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dol">
+          <Key>
+            <PropertyRef Name="Id_d" />
+          </Key>
+          <Property Name="Id_d" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_d" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id_g" />
+          </Key>
+          <Property Name="Id_g" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sotrudnik">
+          <Key>
+            <PropertyRef Name="Id_s" />
+          </Key>
+          <Property Name="Id_s" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDol" Type="int" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Number_phone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Ser_num_pas" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="Pos_v" Type="datetime" Nullable="false" />
+          <Property Name="IdType" Type="int" />
+          <Property Name="IdGender" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="Id_t" />
+          </Key>
+          <Property Name="Id_t" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Sotrudnik_Dol">
+          <End Role="Dol" Type="Self.Dol" Multiplicity="1" />
+          <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dol">
+              <PropertyRef Name="Id_d" />
+            </Principal>
+            <Dependent Role="Sotrudnik">
+              <PropertyRef Name="IdDol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudnik_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id_g" />
+            </Principal>
+            <Dependent Role="Sotrudnik">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudnik_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Id_t" />
+            </Principal>
+            <Dependent Role="Sotrudnik">
+              <PropertyRef Name="IdType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ShikhragimovModelContainer">
+          <EntitySet Name="Dol" EntityType="Self.Dol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sotrudnik" EntityType="Self.Sotrudnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Sotrudnik_Dol" Association="Self.FK_Sotrudnik_Dol">
+            <End Role="Dol" EntitySet="Dol" />
+            <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudnik_Gender" Association="Self.FK_Sotrudnik_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudnik_Type" Association="Self.FK_Sotrudnik_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ShikhragimovModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dol">
+          <Key>
+            <PropertyRef Name="Id_d" />
+          </Key>
+          <Property Name="Id_d" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_d" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Sotrudnik" Relationship="Self.FK_Sotrudnik_Dol" FromRole="Dol" ToRole="Sotrudnik" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id_g" />
+          </Key>
+          <Property Name="Id_g" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gender1" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Sotrudnik" Relationship="Self.FK_Sotrudnik_Gender" FromRole="Gender" ToRole="Sotrudnik" />
+        </EntityType>
+        <EntityType Name="Sotrudnik">
+          <Key>
+            <PropertyRef Name="Id_s" />
+          </Key>
+          <Property Name="Id_s" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDol" Type="Int32" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Number_phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ser_num_pas" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Pos_v" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdType" Type="Int32" />
+          <Property Name="IdGender" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dol" Relationship="Self.FK_Sotrudnik_Dol" FromRole="Sotrudnik" ToRole="Dol" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Sotrudnik_Gender" FromRole="Sotrudnik" ToRole="Gender" />
+          <NavigationProperty Name="Type" Relationship="Self.FK_Sotrudnik_Type" FromRole="Sotrudnik" ToRole="Type" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="Id_t" />
+          </Key>
+          <Property Name="Id_t" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Sotrudnik" Relationship="Self.FK_Sotrudnik_Type" FromRole="Type" ToRole="Sotrudnik" />
+        </EntityType>
+        <Association Name="FK_Sotrudnik_Dol">
+          <End Role="Dol" Type="Self.Dol" Multiplicity="1" />
+          <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dol">
+              <PropertyRef Name="Id_d" />
+            </Principal>
+            <Dependent Role="Sotrudnik">
+              <PropertyRef Name="IdDol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudnik_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id_g" />
+            </Principal>
+            <Dependent Role="Sotrudnik">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudnik_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+          <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="Id_t" />
+            </Principal>
+            <Dependent Role="Sotrudnik">
+              <PropertyRef Name="IdType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ListEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dol" EntityType="Self.Dol" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="Sotrudnik" EntityType="Self.Sotrudnik" />
+          <EntitySet Name="Type" EntityType="Self.Type" />
+          <AssociationSet Name="FK_Sotrudnik_Dol" Association="Self.FK_Sotrudnik_Dol">
+            <End Role="Dol" EntitySet="Dol" />
+            <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudnik_Gender" Association="Self.FK_Sotrudnik_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudnik_Type" Association="Self.FK_Sotrudnik_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ShikhragimovModelContainer" CdmEntityContainer="ListEntities">
+          <EntitySetMapping Name="Dol">
+            <EntityTypeMapping TypeName="ShikhragimovModel.Dol">
+              <MappingFragment StoreEntitySet="Dol">
+                <ScalarProperty Name="Id_d" ColumnName="Id_d" />
+                <ScalarProperty Name="Name_d" ColumnName="Name_d" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="ShikhragimovModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Id_g" ColumnName="Id_g" />
+                <ScalarProperty Name="Gender1" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sotrudnik">
+            <EntityTypeMapping TypeName="ShikhragimovModel.Sotrudnik">
+              <MappingFragment StoreEntitySet="Sotrudnik">
+                <ScalarProperty Name="Id_s" ColumnName="Id_s" />
+                <ScalarProperty Name="IdDol" ColumnName="IdDol" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Number_phone" ColumnName="Number_phone" />
+                <ScalarProperty Name="Ser_num_pas" ColumnName="Ser_num_pas" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Pos_v" ColumnName="Pos_v" />
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type">
+            <EntityTypeMapping TypeName="ShikhragimovModel.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="Id_t" ColumnName="Id_t" />
+                <ScalarProperty Name="Type1" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

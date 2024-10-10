@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ShikhragimovModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Dol">
+    <Key>
+      <PropertyRef Name="Id_d" />
+    </Key>
+    <Property Name="Id_d" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_d" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="Id_g" />
+    </Key>
+    <Property Name="Id_g" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sotrudnik">
+    <Key>
+      <PropertyRef Name="Id_s" />
+    </Key>
+    <Property Name="Id_s" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdDol" Type="int" Nullable="false" />
+    <Property Name="FIO" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="Number_phone" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Ser_num_pas" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Birthday" Type="date" Nullable="false" />
+    <Property Name="Pos_v" Type="datetime" Nullable="false" />
+    <Property Name="IdType" Type="int" />
+    <Property Name="IdGender" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="Id_t" />
+    </Key>
+    <Property Name="Id_t" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Sotrudnik_Dol">
+    <End Role="Dol" Type="Self.Dol" Multiplicity="1" />
+    <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dol">
+        <PropertyRef Name="Id_d" />
+      </Principal>
+      <Dependent Role="Sotrudnik">
+        <PropertyRef Name="IdDol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sotrudnik_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="Id_g" />
+      </Principal>
+      <Dependent Role="Sotrudnik">
+        <PropertyRef Name="IdGender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sotrudnik_Type">
+    <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+    <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="Id_t" />
+      </Principal>
+      <Dependent Role="Sotrudnik">
+        <PropertyRef Name="IdType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ShikhragimovModelContainer">
+    <EntitySet Name="Dol" EntityType="Self.Dol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sotrudnik" EntityType="Self.Sotrudnik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Sotrudnik_Dol" Association="Self.FK_Sotrudnik_Dol">
+      <End Role="Dol" EntitySet="Dol" />
+      <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sotrudnik_Gender" Association="Self.FK_Sotrudnik_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sotrudnik_Type" Association="Self.FK_Sotrudnik_Type">
+      <End Role="Type" EntitySet="Type" />
+      <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

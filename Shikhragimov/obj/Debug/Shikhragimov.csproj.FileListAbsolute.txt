@@ -1,0 +1,17 @@
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\bin\Debug\Shikhragimov.exe.config
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\bin\Debug\Shikhragimov.exe
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\bin\Debug\Shikhragimov.pdb
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\obj\Debug\Shikhragimov.csproj.AssemblyReference.cache
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\obj\Debug\MainWindow.g.cs
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\obj\Debug\App.g.cs
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\obj\Debug\Shikhragimov_MarkupCompile.cache
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\obj\Debug\Shikhragimov_MarkupCompile.lref
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\obj\Debug\MainWindow.baml
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\obj\Debug\Shikhragimov.g.resources
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\obj\Debug\Shikhragimov.Properties.Resources.resources
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\obj\Debug\Shikhragimov.csproj.GenerateResource.cache
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\obj\Debug\Shikhragimov.csproj.CoreCompileInputs.cache
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\obj\Debug\Shikhragimov.exe
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\obj\Debug\Shikhragimov.pdb
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\obj\Debug\Page\Page2.g.cs
+C:\Users\comcuru\Desktop\Shikhragimov\Shikhragimov\obj\Debug\Shikhragimov_Content.g.cs
