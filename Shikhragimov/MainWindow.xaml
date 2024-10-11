@@ -17,7 +17,7 @@
         <Grid Grid.Row="0" Background="#FF76E383">
             <Image Source="Resources/logo.png"
                    HorizontalAlignment="Left"
-                   Margin="190,0,0,0"></Image>
+                   Margin="180,0,0,0"></Image>
             <TextBlock Text="ИС по прокату спортивного инвентаря"
                        FontSize="25"
                        HorizontalAlignment="Center"
